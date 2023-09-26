@@ -17,9 +17,9 @@ class DataCleaningStrategyFactory:
 
     _strategy_dict: dict[PageType, DataCleaningStrategy] = {
         PageType.OVERVIEW: OverviewStrategy(),
-        PageType.MANAGER: ManagerStrategy(),
-        PageType.METRICS: MetricsStrategy(),
-        PageType.INCREASE: RiseStrategy()
+        # PageType.MANAGER: ManagerStrategy(),
+        # PageType.METRICS: MetricsStrategy(),
+        # PageType.INCREASE: RiseStrategy()
     }
 
     @classmethod

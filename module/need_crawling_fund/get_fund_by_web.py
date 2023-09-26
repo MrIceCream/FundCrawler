@@ -43,3 +43,15 @@ class GetNeedCrawledFundByWeb4Test(NeedCrawledFundModule):
         self.total = len(fund_list)
 
         self.task_generator = (NeedCrawledFundModule.NeedCrawledOnceFund(i[1:7], i[10:-1]) for i in fund_list)
+
+
+class GetNeedCrawledFundByWeb4_Assign(NeedCrawledFundModule):
+    """
+    测试用的 基金任务 提供者
+    """
+    # 基金目录
+    fund_list = []
+
+    def init_generator(self) -> NoReturn:
+        self.total = len(self.fund_list)
+        self.task_generator = (NeedCrawledFundModule.NeedCrawledOnceFund(i['code'], i['name']) for i in self.fund_list)
