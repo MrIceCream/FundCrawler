@@ -20,7 +20,7 @@ class SaveResult2File(SaveResultModule):
             os.makedirs(self.result_file_path)
 
         self._file = open(self.result_file_path + self.result_file_name, 'w', newline='', encoding='utf-8')
-        self._writer: DictWriter = DictWriter(self._file, fieldnames=fieldnames, restval=self.default_restval)
+        self._writer: DictWriter = DictWriter(self._file, fieldnames=fieldnames, restval=self.default_restval, delimiter='\t')
 
         self._writer.writeheader()
 

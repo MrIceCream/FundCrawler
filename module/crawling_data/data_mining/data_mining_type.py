@@ -14,6 +14,6 @@ class PageType(Enum):
     # 基金经理 https://fundf10.eastmoney.com/jjjl_910009.html
     # MANAGER = auto()
     # 特色数据 https://fundf10.eastmoney.com/tsdata_910009.html
-    # METRICS = auto()
+    METRICS = auto()
     # 阶段涨幅 https://fundf10.eastmoney.com/jdzf_006624.html
     # INCREASE = auto()
