@@ -27,7 +27,9 @@ class SaveResult2File(SaveResultModule):
     def save_result(self, result: FundCrawlingResult) -> NoReturn:
         row = {header.value: value if value else self.default_restval for header, value in
                result.fund_info_dict.items()}
-        self._writer.writerow(row)
+        
+        if float(row[FundCrawlingResult.Header.FUND_SIZE]) > 5:
+            self._writer.writerow(row)
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self._file.close()

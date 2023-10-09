@@ -52,6 +52,7 @@ class FundCrawlingResult:
         """
         结果key
         """
+        FUND_TARGET = '跟踪标的',
         FUND_SIMPLE_NAME = '基金简称',
         FUND_CODE = '基金代码',
         # FUND_TYPE = '基金类型',
