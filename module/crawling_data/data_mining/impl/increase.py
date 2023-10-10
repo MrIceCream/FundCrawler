@@ -18,7 +18,7 @@ class RiseStrategy(DataCleaningStrategy):
     fund_3_years_increase_pattern = re.compile(fr'近3年[\s\S]*?({number_in_eng}%|---)')
     fund_5_years_increase_pattern = re.compile(fr'近5年[\s\S]*?({number_in_eng}%|---)')
 
-    def build_url(self, fund_code: str) -> str:
+    def build_url(self, fund_code: str, manager_code: str) -> str:
         return self.url_template.substitute(fund_code=fund_code)
 
     def fill_result(self, response: Response, result: FundCrawlingResult) -> NoReturn:

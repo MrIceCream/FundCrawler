@@ -24,7 +24,7 @@ class OverviewStrategy(DataCleaningStrategy):
     fund_price2_pattern = re.compile(r'托管费率</th><td>(.+?)%')
     fund_price3_pattern = re.compile(r'销售服务费率</th><td>(.+?)%')
 
-    def build_url(self, fund_code: str) -> str:
+    def build_url(self, fund_code: str, manager_code: str) -> str:
         return self.url_template.substitute(fund_code=fund_code)
 
     def fill_result(self, response: Response, result: FundCrawlingResult) -> NoReturn:

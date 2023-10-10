@@ -106,6 +106,7 @@ class AsyncHttpRequestDownloader(AsyncHttpDownloader):
             header = {"User-Agent": singleton_fake_ua.get_random_ua()}
             try:
                 page = get(request.url, headers=header, timeout=1)
+                page.encoding = page.apparent_encoding
                 if page.status_code != 200 or not page.text:
                     # 反爬虫策略之 给你返回空白的 200结果
                     raise AttributeError

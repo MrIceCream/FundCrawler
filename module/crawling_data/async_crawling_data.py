@@ -108,7 +108,7 @@ class AsyncCrawlingData(CrawlingDataModule):
                 task_id = self.get_task_id_and_increase()
 
                 strategy = DataCleaningStrategyFactory.get_strategy(date_type)
-                url = strategy.build_url(fund_task.code)
+                url = strategy.build_url(fund_task.code, fund_task.manager_code)
                 # 优化点
                 # 策略怎么解析数据 决定了 数据要怎么爬
                 # 可能是我一次把若干个页面都爬下来 可能是我通过其他方式爬 返回的不是requests封装的Response

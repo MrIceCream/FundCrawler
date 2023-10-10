@@ -17,7 +17,7 @@ class MetricsStrategy(DataCleaningStrategy):
     fund_track_offset_ratio_pattern = re.compile(r'同类平均跟踪误差<.+>\r\n.+\r\n.+\r\n.+?</td><td >(.+?)<')
     fund_information_ratio_pattern = re.compile(r'信息比率.+?\'>(.+?)<.+?\'>(.+?)<.+?\'>(.+?)<')
 
-    def build_url(self, fund_code: str) -> str:
+    def build_url(self, fund_code: str, manager_code: str) -> str:
         return self.url_template.substitute(fund_code=fund_code)
 
     def fill_result(self, response, result: FundCrawlingResult) -> NoReturn:

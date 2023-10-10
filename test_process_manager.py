@@ -11,7 +11,7 @@ from module.save_result.save_result_2_file import SaveResult2File
 from process_manager import NeedCrawledFundModule, CrawlingDataModule, FundCrawlingResult, SaveResultModule, \
     TaskManager
 
-from read_fund_data import get_fund_list
+from read_fund_data import get_fund_list, get_fund_manager
 
 
 class SimpleTestTaskManager(TestCase):
@@ -82,9 +82,11 @@ class SmokeTestTaskManager(TestCase):
 if __name__ == '__main__':
 
     enhance_fund = get_fund_list(True)
-    GetNeedCrawledFundByWeb4_Assign.fund_list = \
-        [fund for fund in enhance_fund if \
+    filter_fund = [fund for fund in enhance_fund if \
          datetime.now() - datetime.strptime(fund['date'], '%Y-%m-%d') > timedelta(days=1095)]
+    filter_fund = get_fund_manager(filter_fund)
+    GetNeedCrawledFundByWeb4_Assign.fund_list = filter_fund
+    # GetNeedCrawledFundByWeb4_Assign.fund_list = [{'code':'006048','name':'','manager_code':'30136277'}]
 
     manager = TaskManager(GetNeedCrawledFundByWeb4_Assign()
                             , AsyncCrawlingData()

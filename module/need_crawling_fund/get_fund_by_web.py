@@ -54,4 +54,4 @@ class GetNeedCrawledFundByWeb4_Assign(NeedCrawledFundModule):
 
     def init_generator(self) -> NoReturn:
         self.total = len(self.fund_list)
-        self.task_generator = (NeedCrawledFundModule.NeedCrawledOnceFund(i['code'], i['name']) for i in self.fund_list)
+        self.task_generator = (NeedCrawledFundModule.NeedCrawledOnceFund(i['code'], i['name'], i['manager_code']) for i in self.fund_list)

@@ -10,7 +10,7 @@ class DataCleaningStrategy(ABC):
     """
 
     @abstractmethod
-    def build_url(self, fund_code: str) -> str:
+    def build_url(self, fund_code: str, manager_code: str) -> str:
         return NotImplemented
 
     @abstractmethod

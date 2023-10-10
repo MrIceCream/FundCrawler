@@ -24,9 +24,10 @@ class NeedCrawledFundModule(ABC):
         需要爬取的 单个基金信息
         """
 
-        def __init__(self, code: str, name: str):
+        def __init__(self, code: str, name: str, manager_code: str):
             self.code = code
             self.name = name
+            self.manager_code = manager_code
 
     def __init__(self):
         self.total = None
@@ -68,6 +69,10 @@ class FundCrawlingResult:
         # THREE_YEARS_INCREASE = '近三年涨幅',
         # FIVE_YEARS_INCREASE = '近五年涨幅'
         INFORMATION_RATIO = '信息比率',
+        TOTAL_WORK_TIME = '累计任职时间',
+        TOTAL_MANAGER_SIZE = '管理总规模',
+        BIG_SIZE_EXP = '量化投资背景',
+        MANAGER_INFO = '基金经理',
         FUND_SIZE = '资产规模(亿)',
 
     def __init__(self, fund_code: str, fund_name: str):

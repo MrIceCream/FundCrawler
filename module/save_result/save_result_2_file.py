@@ -1,6 +1,7 @@
 """
 将爬取结果 保存到csv文件
 """
+from datetime import datetime, timedelta
 import os.path
 from csv import DictWriter
 from typing import NoReturn
@@ -29,7 +30,10 @@ class SaveResult2File(SaveResultModule):
                result.fund_info_dict.items()}
         
         size = float(row[FundCrawlingResult.Header.FUND_SIZE])
-        if size > 2 and size < 10:
+        total_work_time = row[FundCrawlingResult.Header.TOTAL_WORK_TIME]
+        if size > 2 and size < 10 and\
+            int(total_work_time[0:total_work_time.find('年')]) > 2 and\
+                row[FundCrawlingResult.Header.BIG_SIZE_EXP] != 'None':
             self._writer.writerow(row)
 
     def __exit__(self, exc_type, exc_val, exc_tb):
