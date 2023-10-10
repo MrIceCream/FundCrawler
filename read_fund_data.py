@@ -27,7 +27,9 @@ def read_gem(file, is_enhance):
     return result
 
 def get_fund_list(is_enhance):
+    sz50 = read('source/上证50.xlsx', is_enhance)
     hs300 = read('source/沪深300.xlsx', is_enhance)
     zz500 = read('source/中证500.xlsx', is_enhance)
-    cyb500 = read_gem('source/创业板指.xlsx', is_enhance)
-    return hs300 + zz500 + cyb500
+    zz1000 = read('source/中证1000.xlsx', is_enhance)
+    cyb = read_gem('source/创业板指.xlsx', is_enhance)
+    return sz50 + hs300 + zz500 + zz1000 + cyb
