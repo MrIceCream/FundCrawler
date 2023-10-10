@@ -28,7 +28,8 @@ class SaveResult2File(SaveResultModule):
         row = {header.value: value if value else self.default_restval for header, value in
                result.fund_info_dict.items()}
         
-        if float(row[FundCrawlingResult.Header.FUND_SIZE]) > 5:
+        size = float(row[FundCrawlingResult.Header.FUND_SIZE])
+        if size > 2 and size < 10:
             self._writer.writerow(row)
 
     def __exit__(self, exc_type, exc_val, exc_tb):

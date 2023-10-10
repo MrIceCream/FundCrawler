@@ -15,6 +15,7 @@ class MetricsStrategy(DataCleaningStrategy):
     fund_standard_deviation_pattern = re.compile(r'标准差.+?\'>(.+?)<.+?\'>(.+?)<.+?\'>(.+?)<')
     fund_sharpe_ratio_pattern = re.compile(r'夏普比率.+?\'>(.+?)<.+?\'>(.+?)<.+?\'>(.+?)<')
     fund_track_offset_ratio_pattern = re.compile(r'同类平均跟踪误差<.+>\r\n.+\r\n.+\r\n.+?</td><td >(.+?)<')
+    fund_information_ratio_pattern = re.compile(r'信息比率.+?\'>(.+?)<.+?\'>(.+?)<.+?\'>(.+?)<')
 
     def build_url(self, fund_code: str) -> str:
         return self.url_template.substitute(fund_code=fund_code)
@@ -39,4 +40,9 @@ class MetricsStrategy(DataCleaningStrategy):
         fund_track_offset_ratio = self.fund_track_offset_ratio_pattern.search(page_text)
         if fund_track_offset_ratio:
             track_offset = fund_track_offset_ratio.group(1)
-            result.fund_info_dict[FundCrawlingResult.Header.TRACK_OFFSET] = track_offset
+            # result.fund_info_dict[FundCrawlingResult.Header.TRACK_OFFSET] = track_offset
+        
+        fund_information_ratio = self.fund_information_ratio_pattern.search(page_text)
+        if fund_information_ratio:
+            information_ratio = fund_information_ratio.group(3)
+            result.fund_info_dict[FundCrawlingResult.Header.INFORMATION_RATIO] = information_ratio

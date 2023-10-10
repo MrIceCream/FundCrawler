@@ -1,4 +1,5 @@
 import asyncio
+from datetime import datetime, timedelta
 import time
 from typing import NoReturn, Optional
 from unittest import TestCase
@@ -79,7 +80,11 @@ class SmokeTestTaskManager(TestCase):
         manager.run()
 
 if __name__ == '__main__':
-    GetNeedCrawledFundByWeb4_Assign.fund_list = get_fund_list(False)
+
+    enhance_fund = get_fund_list(True)
+    GetNeedCrawledFundByWeb4_Assign.fund_list = \
+        [fund for fund in enhance_fund if \
+         datetime.now() - datetime.strptime(fund['date'], '%Y-%m-%d') > timedelta(days=1095)]
 
     manager = TaskManager(GetNeedCrawledFundByWeb4_Assign()
                             , AsyncCrawlingData()

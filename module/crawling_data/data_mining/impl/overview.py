@@ -62,5 +62,5 @@ class OverviewStrategy(DataCleaningStrategy):
             total_price += float(fund_price2_result.group(1))
         if fund_price3_result and len(fund_price3_result.group(1)) < 5:
             total_price += float(fund_price3_result.group(1))
-        result.fund_info_dict[FundCrawlingResult.Header.FUND_PRICE] = round(total_price, 2)
+        # result.fund_info_dict[FundCrawlingResult.Header.FUND_PRICE] = round(total_price, 2)
 

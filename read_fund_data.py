@@ -1,3 +1,4 @@
+import datetime
 import openpyxl
 
 def read(file, is_enhance):
@@ -10,7 +11,9 @@ def read(file, is_enhance):
             continue
         if is_enhance and '增强' in str(row[1].value) or \
                 not is_enhance and '增强' not in str(row[1].value):
-            result.append({'code':row[0].value,'name':row[1].value})
+            result.append({'code':row[0].value,
+                           'name':row[1].value,
+                           'date':str(row[9].value)})
     return result
 
 def read_gem(file, is_enhance):
@@ -23,7 +26,9 @@ def read_gem(file, is_enhance):
             continue
         if is_enhance and '增强' in str(row[1].value) or \
                 not is_enhance and '增强' not in str(row[1].value):
-            result.append({'code':row[7].value,'name':row[1].value})
+            result.append({'code':row[7].value,
+                           'name':row[1].value,
+                           'date':str(row[2].value).replace(' 00:00:00', '')})
     return result
 
 def get_fund_list(is_enhance):
